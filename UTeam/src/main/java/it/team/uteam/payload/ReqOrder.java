@@ -1,17 +1,14 @@
-package it.team.uteam.Entity;
+package it.team.uteam.payload;
 
-import it.team.uteam.Entity.AbsEntity.AbsNameEntity;
 import lombok.*;
-
-import javax.persistence.Entity;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "orders")
-public class Order extends AbsNameEntity {
+public class ReqOrder {
+    private String name;
     private String lastName;
     private String phoneNumber;
     private String email;
