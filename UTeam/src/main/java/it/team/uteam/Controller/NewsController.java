@@ -34,9 +34,9 @@ public class NewsController {
     }
 
     @PutMapping("/upload/{id}")
-    public HttpEntity<?> uploadVd(@PathVariable Integer id, @RequestParam(name = "vd")UUID vd){
+    public HttpEntity<?> uploadVd(@PathVariable Integer id, @RequestParam(name = "vd") UUID vdId){
         News news = newsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("getNews"));
-        news.setVideoId(vd);
+        news.setVideoId(vdId);
         newsRepository.save(news);
         return ResponseEntity.ok(new ApiResponse("saqlandi", true));
     }

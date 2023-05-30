@@ -3,6 +3,7 @@ package it.team.uteam.Controller;
 import it.team.uteam.Entity.Messages;
 import it.team.uteam.Repository.MessageRepo;
 import it.team.uteam.Service.MessageService;
+import it.team.uteam.payload.ApiResponse;
 import it.team.uteam.payload.ReqMessages;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -30,7 +31,7 @@ public class MessageController {
 
     @PostMapping
     public HttpEntity<?> addMessages(@RequestBody ReqMessages reqMessages) {
-        Messages messages = messageService.SendMessages(reqMessages);
-        return ResponseEntity.status(messages != null ? 200  : 409).body(messages);
+        ApiResponse apiResponse = messageService.SendMessages(reqMessages);
+        return ResponseEntity.status(apiResponse.isSuccess() ? 200  : 409).body(apiResponse);
     }
 }

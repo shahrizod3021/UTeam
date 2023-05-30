@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="uTeam@localhost" uuid="c7690b18-8dd2-46af-a1ca-2baa16826ddd">
+    <data-source source="LOCAL" name="uTeam@localhost" uuid="f8f5f61d-23ec-4b86-bc22-436347845f4d">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
+      <remarks>this is UTeam project</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/uTeam</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
