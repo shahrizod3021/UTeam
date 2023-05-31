@@ -7,6 +7,7 @@ import it.team.uteam.payload.ReqWorker;
 import it.team.uteam.payload.ResWorker;
 import it.team.uteam.payload.ApiResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,17 +40,26 @@ public class WorkerController {
 
     @PostMapping("/addWorker")
     public HttpEntity<?> addWorker(@RequestBody ReqWorker reqWorker) {
-        ApiResponse apiResponse = workerService.addWorker(reqWorker);
-        return ResponseEntity.status(apiResponse.isSuccess()? 200 : 409).body(apiResponse);
+        User user = workerService.addWorker(reqWorker);
+        return ResponseEntity.ok(user);
     }
     @PutMapping("/{id}")
     public HttpEntity<?> editWorker(@PathVariable UUID id,@RequestBody ReqWorker reqWorker) {
         ApiResponse apiResponse = workerService.editWorker(id,reqWorker);
         return ResponseEntity.status(apiResponse.isSuccess()? 200 : 409).body(apiResponse);
     }
+
+    @PutMapping("/upload/{id}")
+    public HttpEntity<?> uploadWorkerPhoto (@PathVariable UUID id, @RequestParam(name = "photoId") UUID photoId) {
+        User getUser = authRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("getUser"));
+        getUser.setPhotoId(photoId);
+        authRepository.save(getUser);
+        return ResponseEntity.ok(new ApiResponse("worker saqlandi",true));
+    }
     @DeleteMapping("/{id}")
     public HttpEntity<?> deleteWorker(@PathVariable UUID id) {
         ApiResponse apiResponse = workerService.deleteWorker(id);
         return ResponseEntity.status(apiResponse.isSuccess()? 200 : 409).body(apiResponse);
     }
+
 }

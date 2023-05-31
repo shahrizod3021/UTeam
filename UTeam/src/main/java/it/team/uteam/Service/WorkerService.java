@@ -43,7 +43,7 @@ public class WorkerService {
         return resWorkers;
     }
 
-    public ApiResponse addWorker(ReqWorker reqWorker) {
+    public User addWorker(ReqWorker reqWorker) {
         boolean exist = authRepository.existsUserByPhoneNumber(reqWorker.getPhoneNumber());
         boolean emailExist = authRepository.existsUserByEmail(reqWorker.getEmail());
         Role getRole = roleRepository.findById(3).orElseThrow(() -> new ResourceNotFoundException("getRole"));
@@ -56,10 +56,10 @@ public class WorkerService {
                         .phoneNumber(reqWorker.getPhoneNumber())
                         .role(getRole)
                         .build();
-                authRepository.save(build);
+                return authRepository.save(build);
             }
         }
-        return new ApiResponse("Worker successfulliy saved ",true);
+        return null;
     }
     public ApiResponse editWorker(UUID id,ReqWorker reqWorker){
         Optional<User> byId = authRepository.findById(id);

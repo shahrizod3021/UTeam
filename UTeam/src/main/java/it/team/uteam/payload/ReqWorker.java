@@ -16,8 +16,6 @@ public class ReqWorker {
 
     private String phoneNumber;
 
-    private String password;
-
     private String email;
 
 }

@@ -1,0 +1,48 @@
+
+
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+}
+
+.outerring {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    border-radius: 100%;
+    border: 5px solid #47dbdb;
+}
+
+.innerring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 2px);
+    height: calc(100% - 3px);
+    border-radius: 100%;
+    border: 5px solid #2255cb;
+    animation: breathe 4s linear infinite;
+}
+
+@keyframes breathe {
+    0% {
+        box-shadow: 0;
+    }
+    25% {
+        box-shadow: inset 0 0 20px 5px #2255cb;
+    }
+    50% {
+        box-shadow: inset 0 0 120px 5px #2255cb;
+    }
+    75% {
+        box-shadow: inset 0 0 20px 5px #2255cb;
+    }
+    100% {
+        box-shadow: 0;
+    }
+}
