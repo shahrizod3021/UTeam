@@ -3,7 +3,6 @@ package it.team.uteam.Controller;
 import it.team.uteam.Entity.Projects;
 import it.team.uteam.Repository.ProjectRepository;
 import it.team.uteam.payload.ApiResponse;
-import javafx.beans.property.ReadOnlySetProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

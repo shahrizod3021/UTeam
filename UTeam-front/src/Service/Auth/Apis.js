@@ -4,6 +4,7 @@ export const Apis  = {
     projects: "/projects",
     news:'/news',
     auth:'/auth',
-    getContent: Base_Url + '/attachment/download?id='
+    getContent: Base_Url + '/attachment/download?id=',
+    footer:'/footer'
 }
 
