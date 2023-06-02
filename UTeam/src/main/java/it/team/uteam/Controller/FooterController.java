@@ -18,7 +18,7 @@ import java.util.List;
 public class FooterController {
     private final FooterService footerService;
 
-    @GetMapping("/list")
+    @GetMapping
     public HttpEntity<?> getFooter() {
         List<ResFooter> course = footerService.getFooter();
         return ResponseEntity.ok(course);

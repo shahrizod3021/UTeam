@@ -30,7 +30,7 @@ public class FooterService {
                     .build();
             footers.add(build);
         }
-        return null;
+        return footers;
     }
 
     public Footer addFooter(ReqFooter reqFooter) {
