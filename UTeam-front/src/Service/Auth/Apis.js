@@ -5,6 +5,7 @@ export const Apis  = {
     news:'/news',
     auth:'/auth',
     getContent: Base_Url + '/attachment/download?id=',
-    footer:'/footer'
+    footer:'/footer',
+    message:'/message'
 }
 

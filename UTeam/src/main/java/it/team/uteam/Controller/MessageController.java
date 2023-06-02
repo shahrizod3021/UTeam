@@ -23,7 +23,7 @@ public class MessageController {
 
     private final MessageService messageService;
 
-    @GetMapping("/list")
+    @GetMapping
     public HttpEntity<?> getMessage() {
         List<Messages> all = messageRepo.findAll();
         return ResponseEntity.ok(all);

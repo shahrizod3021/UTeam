@@ -24,7 +24,6 @@ export const Footers = () => {
             await getFooters(setFooter, setLoading)
             setLoading(true)
         } catch (err) {
-
         }
     }
     useEffect(() => {
