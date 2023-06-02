@@ -1,7 +1,7 @@
 import  '../assets/Loading.css'
 export const Loading = () => {
     return(
-        <div>
+        <div className={"loadjon"}>
             <div className="container">
                 <div className="outerring">
                     <div className="innerring">

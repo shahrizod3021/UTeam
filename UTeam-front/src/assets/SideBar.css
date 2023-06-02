@@ -55,5 +55,17 @@ body {
 
 .vdController{
     width: 100%;
+
+}
+
+.vdCarousel{
+    width: 100%;
+}
+@media (max-width: 464px) {
+    .vdCarousel{
+        width: 100%;
+        height: auto;
+        margin-bottom: 50px;
+    }
 }
 

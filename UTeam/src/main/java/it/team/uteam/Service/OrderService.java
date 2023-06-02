@@ -34,6 +34,7 @@ public class OrderService {
         List<ResOrder> resOrders = new ArrayList<>();
         for (Order order : all) {
             ResOrder build = ResOrder.builder()
+                    .name(order.getName())
                     .phoneNumber(order.getPhoneNumber())
                     .lastName(order.getLastName())
                     .email(order.getEmail())

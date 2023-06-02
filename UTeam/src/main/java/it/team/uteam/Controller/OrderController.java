@@ -1,5 +1,7 @@
 package it.team.uteam.Controller;
 
+import it.team.uteam.Entity.Order;
+import it.team.uteam.Repository.OrderRepository;
 import it.team.uteam.Service.OrderService;
 import it.team.uteam.payload.*;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderService orderService;
+    private final OrderRepository orderRepository;
 
     @PostMapping("/addOrder")
     public HttpEntity<?> addOrder(@RequestBody ReqOrder order) {
@@ -21,9 +24,9 @@ public class OrderController {
         return ResponseEntity.status(apiResponse.isSuccess() ? 200 : 409).body(apiResponse);
     }
 
-    @GetMapping("/getOrder")
+    @GetMapping
     public HttpEntity<?> OrderList() {
-        List<ResOrder> resOrders = orderService.orderList();
-        return ResponseEntity.ok(resOrders);
+        List<Order> all = orderRepository.findAll();
+        return ResponseEntity.ok(all);
     }
 }

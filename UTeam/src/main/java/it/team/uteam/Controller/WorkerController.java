@@ -34,14 +34,14 @@ public class WorkerController {
 
     @GetMapping("/list")
     public HttpEntity<?> WorkerList() {
-        List<ResWorker> resWorkers = workerService.WorkerList();
-        return ResponseEntity.ok(resWorkers);
+        List<User> all = authRepository.findAll();
+        return ResponseEntity.ok(all);
     }
 
     @PostMapping("/addWorker")
     public HttpEntity<?> addWorker(@RequestBody ReqWorker reqWorker) {
         User user = workerService.addWorker(reqWorker);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.status(user != null ? 200 : 409).body(user);
     }
     @PutMapping("/{id}")
     public HttpEntity<?> editWorker(@PathVariable UUID id,@RequestBody ReqWorker reqWorker) {

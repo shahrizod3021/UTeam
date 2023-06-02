@@ -9,6 +9,8 @@ import it.team.uteam.payload.ResWorker;
 import it.team.uteam.payload.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -58,6 +60,7 @@ public class WorkerService {
                         .build();
                 return authRepository.save(build);
             }
+            return null;
         }
         return null;
     }

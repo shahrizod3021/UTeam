@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ResOrder {
+    private String name;
     private String lastName;
     private String phoneNumber;
     private String email;

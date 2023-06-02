@@ -8,7 +8,7 @@ export const  Sidebar = () => {
                     <div className="position-sticky">
                         <div className="list-group list-group-flush mx-3 mt-4">
                             <Link
-                                to="/auth/admin/uTeam/projects/videoNews"
+                                to="/auth/admin/uTeam/projects/"
                                 className="list-group-item list-group-item-action py-2 ripple"
                                 aria-current="true"
                             >
