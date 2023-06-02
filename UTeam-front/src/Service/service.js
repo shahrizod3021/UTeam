@@ -128,3 +128,26 @@ export const GetOrder = async (setData) => {
     }catch (err){
     }
 }
+export const getMessages=async(setData)=>{
+
+    try {
+        const res=await axios.get(Base_Url+ Apis.message)
+        setData(res.data)
+    }
+    catch (err){
+        console.log(err)
+    }
+}
+export const sendMessages=async (data)=>{
+    if (data.name.trim().length===0){
+        toast.warning("enter name")
+    }
+    if (data.phoneNumber.trim().length!==9){
+        toast.warning("error phoneNumber")
+    }
+    try {
+        const res=await axios.post(Base_Url+ Apis.message,data)
+    }catch (err){
+        console.log(err)
+    }
+}
