@@ -13,6 +13,8 @@ export const  GetVideoNews = async (setData) => {
     }
 }
 
+
+
 export const AddNews = async (name, description) => {
     try {
         const res = await axios.post(Base_Url + Apis.news + "?name=" + name + "&description=" + description)
@@ -51,6 +53,7 @@ export const LoginJon = async (data) => {
         const res = await axios.post(Base_Url + Apis.auth + "/login", data)
         if (resStatus(res.status)){
             localStorage.setItem("path","/auth/admin/uTeam/projects")
+            localStorage.setItem("adminData", res.data.user.id)
             return toast.success("logindan muvaffaqiyatli o'tdingiz", {position: "top-center"})
         }
     }catch (err){

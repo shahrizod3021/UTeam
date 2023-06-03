@@ -7,6 +7,7 @@ export const Apis  = {
     auth:'/auth',
     getContent: Base_Url + '/attachment/download?id=',
     worker:"/worker",
-    order : "/order"
+    order : "/order",
+    message: "/message"
 }
 
