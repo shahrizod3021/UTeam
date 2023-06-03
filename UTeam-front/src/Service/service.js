@@ -137,7 +137,7 @@ export const getMessages=async(setData)=>{
         console.log(err)
     }
 }
-export const sendMessages = async (data) => {
+export const sendMessage = async (data) => {
     if (data.name.trim().length === 0) {
         return toast.warning("ismizni kiriting")
     }
@@ -181,4 +181,19 @@ export const getFooter=async(setData)=>{
     catch (err){
         console.log(err)
     }
+}
+export const deleteMethods = async (url,id,getAll) => {
+    const del=window.confirm("delete")
+    if (del){
+        try {
+            const res = await axios.delete(url + "/" + id)
+            if (resStatus(res.status)) {
+                toast.success("deleted")
+                getAll()
+            }
+        } catch (err) {
+            toast.error(err.response.message)
+        }
+    }
+
 }
