@@ -2,7 +2,7 @@ import course from '../../assets/coursevideo.mp4'
 import Carousel from "react-multi-carousel";
 import service from '../../assets/service-icon-01.png'
 import meat from '../../assets/meeting-01.jpg'
-import {GetProjects, GetTeam, GetVideoNews} from "../../Service/service.js";
+import {GetProjects, GetTeam, GetVideoNews, sendMessages} from "../../Service/service.js";
 import React, {useEffect, useState} from "react";
 import {Apis} from "../../Service/Auth/Apis.js";
 import {Link} from "react-router-dom";
@@ -12,7 +12,13 @@ export const Basic = () => {
     const [loading, setLoading] = useState(false)
     const [projects, setProject] = useState([])
     const [news, setNews] = useState([])
+    const [name, setName]=useState('')
+    const [phoneNumber, setPhoneNumber]=useState('')
+    const [message, setMessage]=useState('')
 
+    const data1={
+        name, phoneNumber, message
+    }
 
     const myWaiting = ()=> {
         alert("qozi")
@@ -306,7 +312,7 @@ export const Basic = () => {
                               ))}
                     </Carousel>
                 </section>
-                <section className="contact-us" id="contact">
+                <section className="contact-us "id="contact">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-9 align-self-center">
@@ -320,25 +326,25 @@ export const Basic = () => {
                                                 <div className="col-lg-4">
                                                     <fieldset>
                                                         <input name="name" type="text" id="name"
-                                                               placeholder="ISMINGIZ...*" required=""/>
+                                                               placeholder="ISMINGIZ...*" required="" onChange={e=>setName(e.target.value)}/>
                                                     </fieldset>
                                                 </div>
                                                 <div className="col-lg-4">
                                                     <fieldset>
                                                         <input name="subject" type="number" id="subject"
-                                                               placeholder="TELEFON RAQAM...*" required=""/>
+                                                               placeholder="TELEFON RAQAM...*" required="" onChange={e=>setPhoneNumber(e.target.value)}/>
                                                     </fieldset>
                                                 </div>
                                                 <div className="col-lg-4">
                                                     <fieldset>
-                                                        <textarea name="message" type="text" className="form-control"
+                                                        <textarea name="message"  className="form-control"
                                                                   id="message" placeholder="YOUR MESSAGE..."
-                                                                  required=""></textarea>
+                                                                  required="" onChange={e=>setMessage(e.target.value)}></textarea>
                                                     </fieldset>
                                                 </div>
                                                 <div className="col-lg-12">
                                                     <fieldset>
-                                                        <button type="submit" id="form-submit" className="button">SEND
+                                                        <button type="button" id="form-submit" className="button" onClick={()=>sendMessages(data1)}>SEND
                                                             MESSAGE NOW
                                                         </button>
                                                     </fieldset>
@@ -353,7 +359,7 @@ export const Basic = () => {
                                     <ul>
                                         <li>
                                             <h6>Telefon raqam</h6>
-                                            <span>+998 88 *** 06 30</span>
+                                            <span>+998 88 581 06 30</span>
                                         </li>
                                         <li>
                                             <h6>Email Address</h6>
@@ -372,10 +378,9 @@ export const Basic = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="footer">
-                        <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
-                            <br/>Design: <a href="https://templatemo.com" target="_parent"
-                                           title="free css templates">TemplateMo</a></p>
+                    <div style={{width:'100px'}}>
+                        <br/>
+                        <br/>
                     </div>
                 </section>
             </div>

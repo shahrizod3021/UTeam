@@ -47,6 +47,8 @@ public class FooterService {
             Footer footer = byId.get();
             if (!footerRepo.existsCategoryByNameEqualsIgnoreCaseAndIdNot(reqFooter.getName(), footer.getId())) {
                 footer.setName(reqFooter.getName());
+                footer.setIcon(reqFooter.getIcon());
+                footer.setLink(reqFooter.getLink());
                 footerRepo.save(footer);
                 return new ApiResponse("suuccess", true);
             }
