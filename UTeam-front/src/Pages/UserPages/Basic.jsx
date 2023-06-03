@@ -2,7 +2,7 @@ import course from '../../assets/coursevideo.mp4'
 import Carousel from "react-multi-carousel";
 import service from '../../assets/service-icon-01.png'
 import meat from '../../assets/meeting-01.jpg'
-import {GetProjects, GetTeam, GetVideoNews} from "../../Service/service.js";
+import {GetProjects, GetTeam, GetVideoNews, sendMessage} from "../../Service/service.js";
 import React, {useEffect, useState} from "react";
 import {Apis} from "../../Service/Auth/Apis.js";
 import {Link} from "react-router-dom";
@@ -326,25 +326,25 @@ export const Basic = () => {
                                                 <div className="col-lg-4">
                                                     <fieldset>
                                                         <input name="name" type="text" id="name"
-                                                               placeholder="ISMINGIZ...*" required=""/>
+                                                               placeholder="ISMINGIZ...*" required="" onChange={e=>setName(e.target.value)}/>
                                                     </fieldset>
                                                 </div>
                                                 <div className="col-lg-4">
                                                     <fieldset>
                                                         <input name="subject" type="number" id="subject"
-                                                               placeholder="TELEFON RAQAM...*" required=""/>
+                                                               placeholder="TELEFON RAQAM...*" required="" onChange={e=>setPhoneNumber(e.target.value)}/>
                                                     </fieldset>
                                                 </div>
                                                 <div className="col-lg-4">
                                                     <fieldset>
-                                                        <textarea name="message" type="text" className="form-control"
+                                                        <textarea name="message" onChange={e=>setPhoneNumber(e.target.value)} className="form-control"
                                                                   id="message" placeholder="YOUR MESSAGE..."
                                                                   required=""></textarea>
                                                     </fieldset>
                                                 </div>
                                                 <div className="col-lg-12">
                                                     <fieldset>
-                                                        <button type="submit" id="form-submit" className="button">SEND
+                                                        <button type="button" id="form-submit" onClick={()=>sendMessage(data1)} className="button">SEND
                                                             MESSAGE NOW
                                                         </button>
                                                     </fieldset>
@@ -377,11 +377,6 @@ export const Basic = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="footer">
-                        <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
-                            <br/>Design: <a href="https://templatemo.com" target="_parent"
-                                           title="free css templates">TemplateMo</a></p>
                     </div>
                 </section>
             </div>
