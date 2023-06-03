@@ -1,6 +1,9 @@
 import {Link} from "react-router-dom";
 import '../assets/SideBar.css'
 export const  Sidebar = () => {
+    const logout = () => {
+        localStorage.clear()
+    }
     return(
         <div>
             <header>
@@ -48,12 +51,7 @@ export const  Sidebar = () => {
                         </button>
 
                         <Link className="navbar-brand" to="/">
-                            <img
-                                src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                                height="25"
-                                alt="MDB Logo"
-                                loading="lazy"
-                            />
+                            <h1>UTeam</h1>
                         </Link>
                         <form className="d-none d-md-flex input-group w-auto my-auto">
                             <input
@@ -106,13 +104,7 @@ export const  Sidebar = () => {
                                     aria-labelledby="navbarDropdownMenuLink"
                                 >
                                     <li>
-                                        <Link className="dropdown-item" to="/">My profile</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/">Settings</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="dropdown-item" to="/">Logout</Link>
+                                        <Link className="dropdown-item" to="/" onClick={() => logout()}>Logout</Link>
                                     </li>
                                 </ul>
                             </li>

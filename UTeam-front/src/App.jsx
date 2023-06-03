@@ -12,6 +12,7 @@ import {UserLayout} from "./Layout/UserLayout.jsx";
 import {Basic} from "./Pages/UserPages/Basic.jsx";
 import {OneWorker} from "./Pages/UserPages/OneWorker.jsx";
 import {Ordering} from "./Pages/UserPages/Ordering.jsx";
+import {NotFoundPage} from "./Component/NotFoundPage.jsx";
 
 export const App = () => {
     return (
@@ -32,6 +33,7 @@ export const App = () => {
                             <Route path={"/ordering"} element={<Ordering/>}/>
                         </Route>
                         <Route path={"/auth/uTeam/login"} element={<Login/>}/>
+                    <Route path={"*"} element={<NotFoundPage/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
