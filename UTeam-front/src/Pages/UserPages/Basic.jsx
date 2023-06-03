@@ -337,7 +337,7 @@ export const Basic = () => {
                                                 </div>
                                                 <div className="col-lg-4">
                                                     <fieldset>
-                                                        <textarea name="message" onChange={e=>setPhoneNumber(e.target.value)} className="form-control"
+                                                        <textarea name="message" onChange={e=>setMessage(e.target.value)} className="form-control"
                                                                   id="message" placeholder="YOUR MESSAGE..."
                                                                   required=""></textarea>
                                                     </fieldset>
