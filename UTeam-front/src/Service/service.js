@@ -161,3 +161,24 @@ export const addFooter = async (data) => {
         console.log(err)
     }
 }
+
+export const EditFooter=async (id, data, getAll)=>{
+    try {
+        const res=await axios.put(Base_Url+Apis.footer+"/"+id, data)
+        toast.success("edited bro")
+        getAll()
+    }
+    catch (err){
+        console.log(err)
+    }
+}
+export const getFooter=async(setData)=>{
+
+    try {
+        const res=await axios.get(Base_Url+ Apis.footer)
+        setData(res.data)
+    }
+    catch (err){
+        console.log(err)
+    }
+}
