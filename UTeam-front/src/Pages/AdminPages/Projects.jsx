@@ -1,4 +1,4 @@
-import {AddProjects, GetProjects, PhotoUpload} from "../../Service/service.js";
+import {AddProjects, deleteMethods, GetProjects, PhotoUpload} from "../../Service/service.js";
 import {useEffect, useState} from "react";
 import {Loading} from "../../Component/Loading.jsx";
 import {Apis} from "../../Service/Auth/Apis.js";
@@ -66,7 +66,11 @@ export const Projects = () => {
                                                </p>
                                            </div>
                                            <div className={"card-footer"}>
-                                                <Link to={item.link} className={"link-info"}>ko'rish</Link>
+                                                <Link to={item.link} className={"link-info me-3"}>ko'rish</Link>
+                                               <button className={'btn btn-danger btn-sm'} onClick={() =>setTimeout(() => {
+                                                   deleteMethods(Base_Url + Apis.projects , item.id, getProjects())
+                                                   window.location.reload()
+                                               }, 1000) }>olib tashlash</button>
                                            </div>
                                        </div>
                                    </div>
@@ -105,7 +109,6 @@ export const Projects = () => {
                                 <button className={"btn disabled"} data-bs-toggle={"modal"} data-bs-target={"#uploadProjectPhoto"}  type={"button"} onClick={() => addProject()}>saqlash</button>
                             ) : (
                                 <button className={"btn btn-success"} data-bs-toggle={"modal"} data-bs-target={"#uploadProjectPhoto"}  type={"button"} onClick={() => addProject()}>saqlash</button>
-
                             )}
                         </div>
                     </div>

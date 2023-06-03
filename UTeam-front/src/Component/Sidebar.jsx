@@ -15,22 +15,22 @@ export const  Sidebar = () => {
                                 className="list-group-item list-group-item-action py-2 ripple"
                                 aria-current="true"
                             >
-                                <i className="fas fa-tachometer-alt fa-fw me-3"></i><span>Our projects</span>
+                                <i className="fas fas fa-list-check fa-fw me-3"></i><span>Our projects</span>
                             </Link>
                             <Link to="/auth/admin/uTeam/projects/videoNews" className="list-group-item list-group-item-action py-2 ripple">
-                                <i className="fas fa-chart-area fa-fw me-3"></i><span>Video news</span>
+                                <i className="fas fa-video fa-fw me-3"></i><span>Video news</span>
                             </Link>
                             <Link to="/auth/admin/uTeam/projects/joiningToTeam" className="list-group-item list-group-item-action py-2 ripple"
-                            ><i className="fas fa-lock fa-fw me-3"></i><span>Joining to Team</span></Link
+                            ><i className="fas fa-users me-2"></i><span>Joining to Team</span></Link
                             >
                             <Link to="/auth/admin/uTeam/projects/messages" className="list-group-item list-group-item-action py-2 ripple"
-                            ><i className="fas fa-chart-line fa-fw me-3"></i><span>Messages</span></Link
+                            ><i className="fas fa-comment-sms fa-fw me-3"></i><span>Messages</span></Link
                             >
                             <Link to="/auth/admin/uTeam/projects/footers" className="list-group-item list-group-item-action py-2 ripple"
-                            ><i className="fas fa-chart-line fa-fw me-3"></i><span>Footers</span></Link
+                            ><i className="fas fa-shoe-prints fa-fw me-3"></i><span>Footers</span></Link
                             >
                             <Link to="/auth/admin/uTeam/projects/orders" className="list-group-item list-group-item-action py-2 ripple"
-                            ><i className="fas fa-chart-line fa-fw me-3"></i><span>Orders</span></Link
+                            ><i className="fas fa-cart-shopping fa-fw me-3"></i><span>Orders</span></Link
                             >
                         </div>
                     </div>
@@ -72,12 +72,11 @@ export const  Sidebar = () => {
                                     id="navbarDropdownMenuLink"
                                 >
                                     <i className="fas fa-bell"></i>
-                                    <span className="badge rounded-pill badge-notification bg-danger">1</span>
                                 </Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link me-3 me-lg-0" to="/">
+                                <Link className="nav-link me-3 me-lg-0" to="https://github.com/sayfullodev">
                                     <i className="bi bi-github"></i>
                                 </Link>
                             </li>

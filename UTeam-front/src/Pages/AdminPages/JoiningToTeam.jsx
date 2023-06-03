@@ -1,4 +1,4 @@
-import {AddWorker, GetTeam, PhotoUpload} from "../../Service/service.js";
+import {AddWorker, DeleteNews, DeleteWorker, GetTeam, PhotoUpload} from "../../Service/service.js";
 import {useEffect, useState} from "react";
 import {Loading} from "../../Component/Loading.jsx";
 import {Apis} from "../../Service/Auth/Apis.js";
@@ -38,12 +38,16 @@ export const JoiningToTeam = () => {
         if (id === null) {
             const res = await axios.put(Base_Url + Apis.worker + "/upload/" + localStorage.getItem("workerId") + "?photoId=" + photoId)
             toast.success(res.data.message, {position: "top-center"})
-            getTeam()
+            await getTeam()
         }
         const res = await axios.put(Base_Url + Apis.worker + "/upload/" + id + "?photoId=" + photoId)
         toast.success(res.data.message, {position: "top-center"})
-        getTeam()
+        await getTeam()
 
+    }
+    const deleteWorker = async (id) => {
+        await DeleteWorker(id)
+        await getTeam()
     }
     return (
         <div>
@@ -77,8 +81,9 @@ export const JoiningToTeam = () => {
                                                 </p>
                                             </div>
                                             <div className={"card-footer"}>
-                                                <Link to={item.email} className={"link-info"}>Git hub accauntga
+                                                <Link to={item.email} className={"link-info me-1"}>Git hub accauntga
                                                     o'tish</Link>
+                                                <button className={"btn btn-danger btn-sm"} onClick={() => deleteWorker(item.id)}>olib tashlash</button>
                                             </div>
                                         </div>
                                     </div>

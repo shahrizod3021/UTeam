@@ -6,6 +6,8 @@ export const Messages = () => {
     const [messages, setMessages] = useState([])
     const [loading, setLoading] = useState(false)
 
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     const getAll = async () => {
         try {
             await getMessages(setMessages, setLoading)
@@ -26,10 +28,10 @@ export const Messages = () => {
                         <table className={"table"}>
                             <thead>
                             <tr>
-                                <th>id</th>
-                                <th>name</th>
-                                <th>message</th>
-                                <th>phoneNumber</th>
+                                <th className={"col-3"}>id</th>
+                                <th className={"col-3"}>name</th>
+                                <th className={"col-3"}>message</th>
+                                <th className={"col-3"}>phoneNumber</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -38,7 +40,10 @@ export const Messages = () => {
                                     <tr>
                                         <td>{i + 1}</td>
                                         <td>{item.name}</td>
-                                        <td>{item.message}</td>
+                                        <td>{item.message.trim().length > 15 ? (<>{item.message.substring(0, 15)}... <button type="button" className="bg-transparent border-0"
+                                                                                                                          data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                                                                          data-bs-custom-class="custom-tooltip"
+                                                                                                                          data-bs-title={item.message}><i className={"bi-eye"}></i></button></>) : (<>{item.message}</>)}</td>
                                         <td>{item.phoneNumber}</td>
                                     </tr>
                                 </>

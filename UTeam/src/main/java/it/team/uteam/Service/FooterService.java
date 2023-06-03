@@ -41,18 +41,24 @@ public class FooterService {
         }
         return null;
     }
+
     public ApiResponse editFooter(Integer id, ReqFooter reqFooter) {
         Optional<Footer> byId = footerRepo.findById(id);
         if (byId.isPresent()) {
             Footer footer = byId.get();
-            if (!footerRepo.existsCategoryByNameEqualsIgnoreCaseAndIdNot(reqFooter.getName(), footer.getId())) {
-                footer.setName(reqFooter.getName());
+            if (reqFooter.getIcon().trim().length() != 0) {
                 footer.setIcon(reqFooter.getIcon());
-                footer.setLink(reqFooter.getLink());
-                footerRepo.save(footer);
-                return new ApiResponse("suuccess", true);
             }
-            return new ApiResponse("already exists", false);
+            if (reqFooter.getName().trim().length() != 0) {
+                if (!footerRepo.existsCategoryByNameEqualsIgnoreCaseAndIdNot(reqFooter.getName(), footer.getId())) {
+                    footer.setName(reqFooter.getName());
+                }
+            }
+            if (reqFooter.getLink().trim().length() != 0) {
+                footer.setLink(reqFooter.getLink());
+            }
+            footerRepo.save(footer);
+            return new ApiResponse("suuccess", true);
         }
         return new ApiResponse("not found", false);
     }

@@ -13,12 +13,9 @@ public class MessageService {
     private final MessageRepo messageRepo;
 
     public ApiResponse SendMessages(ReqMessages reqMessages) {
-        if (!messageRepo.existsMessagesByNameEqualsIgnoreCase(reqMessages.getName())) {
-            Messages messages = new Messages(reqMessages.getMessage(), reqMessages.getPhoneNumber());
-            messages.setName(reqMessages.getName());
-             messageRepo.save(messages);
-            return new ApiResponse("habar saqlandi", true);
-        }
-        return new ApiResponse("habar yuborilmadi", false);
+        Messages messages = new Messages(reqMessages.getMessage(), reqMessages.getPhoneNumber());
+        messages.setName(reqMessages.getName());
+        messageRepo.save(messages);
+        return new ApiResponse("habaringiz yuborildi", true);
     }
 }

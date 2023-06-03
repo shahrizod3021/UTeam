@@ -39,9 +39,13 @@ export const Order = () => {
                                         <td>{item.name}</td>
                                         <td>{item.lastName}</td>
                                         <td>{item.phoneNumber}</td>
-                                        {item.why.trim().length > 15 ? (<> <td>{item.why.substring(0, 10)}... <button type={"button"} className={"bg-transparent border-0"} data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                                                                      data-bs-custom-class="custom-tooltip"
-                                                                                                                      data-bs-title={item.why}><i className={"text-primary bi-eye"}></i></button></td></>) : (<> <td>{item.why}</td></>)}
+                                        {item.why.trim().length > 15 ? (<> <td>{item.why.substring(0, 10)}...
+                                            <button type="button" className="bg-transparent border-0"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-custom-class="custom-tooltip"
+                                                    data-bs-title={item.why}>
+                                                <i className={"bi-eye text-primary"}></i>
+                                            </button></td></>) : (<> <td>{item.why}</td></>)}
                                         <td><button className={"bg-transparent border-0 text-danger"}><i className={"bi-trash"}></i></button></td>
                                     </tr>
                                 </>

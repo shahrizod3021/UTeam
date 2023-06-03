@@ -43,4 +43,11 @@ public class ProjectsController {
         projectRepository.save(getProject);
         return ResponseEntity.ok(new ApiResponse("project saqlnadi", true));
     }
+
+    @DeleteMapping("/{id}")
+    public HttpEntity<?> deleteProject(@PathVariable Integer id){
+        Projects getProject = projectRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("getProject"));
+        projectRepository.delete(getProject);
+        return ResponseEntity.ok(new ApiResponse("Olib tashlandi", true));
+    }
 }

@@ -34,11 +34,10 @@ export const FooterCall = () => {
                     <div className="row">
                         <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                             <h6 className="text-uppercase fw-bold mb-4 text-light mt-3">
-                                <i className="fas fa-gem me-3 text-secondary"></i>uTeam
+                                <i className="fas fa-house-laptop me-3 text-secondary"></i>uTeam
                             </h6>
                             <p className={"text-light"}>
-                                Bu UTeam vebsayti qaysiki UTeam proyektlarini ko'rsatadi va biz haqimizdagi malimot
-                                yozilgan. Va bu vebsaytdan zakaz oslsa buladi
+                                UTeam sizning kompaniyangiz va shahsiy maqsadlar uchun web site va mobile application yaratib beradigan kompaniya
                             </p>
                         </div>
                         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -74,7 +73,7 @@ export const FooterCall = () => {
                                     <>
                                         {item.name.startsWith("+998")||item.name.endsWith("@gmail.com") ? (
                                             <>
-                                                <p className={"text-light"}><i className={item.icon}> {item.name}</i></p>
+                                                <Link to={item.link} className={"text-light"}><i style={{fontSize:"15px"}} className={item.icon}/> {item.name}</Link>
                                             </>
                                         ):(
                                             <></>
