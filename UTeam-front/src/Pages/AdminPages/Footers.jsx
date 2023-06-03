@@ -19,7 +19,7 @@ export const Footers = () => {
 
     const getAll = async () => {
         try {
-            await getFooter(setFooter)
+            await getFooter(setFooter, setLoading)
             setLoading(true)
         } catch (err) {
         }
@@ -36,11 +36,6 @@ export const Footers = () => {
     const deleteFooter = async (id) => {
         await deleteMethods(Base_Url + Apis.footer, id)
        await getAll()
-    }
-
-    const editFooter = async () =>{
-        await EditFooter(data, id)
-        getAll()
     }
 
     return(
@@ -87,14 +82,14 @@ export const Footers = () => {
                                 <div className="modal-body">
                                     <form action="">
                                         <label htmlFor="name" className={"text-primary m-2"}>ism</label>
-                                        <input type="text" className={"form-control"} placeholder={"ism"} id={"name"} value={name} name={"name"} onChange={e=>setName(e.target.value)}/>
+                                        <input type="text" className={"form-control"} placeholder={"ism"} id={"name"} name={"name"} onChange={e=>setName(e.target.value)}/>
                                         <label htmlFor="link" className={"text-primary m-2"}>link</label>
-                                        <input type="text" placeholder={"link"} className={"form-control"} id={"link"} value={link} name={"link"} onChange={e=>setLink(e.target.value)}/>
+                                        <input type="text" placeholder={"link"} className={"form-control"} id={"link"} name={"link"} onChange={e=>setLink(e.target.value)}/>
                                         <label htmlFor="icon" className={"text-primary m-2"}>icon</label>
                                         <input type="text" placeholder={"link"} id={"icon"} name={"icon"} className={"form-control"} value={icon} onChange={e => setIcon(e.target.value)}/>
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">yopish</button>
-                                            <button type="button" className="btn btn-warning"  onClick={()=>editFooter()}>Taxrirlash</button>
+                                            <button type="button" className="btn btn-primary"  onClick={()=>EditFooter(id,data,getAll)}>qo'shish</button>
                                         </div>
                                     </form>
                                 </div>
@@ -110,7 +105,6 @@ export const Footers = () => {
                                 <th>name</th>
                                 <th>link</th>
                                 <th>icon</th>
-                                <th>action</th>
                             </tr>
                             </thead>
                             <tbody>
