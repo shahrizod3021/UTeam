@@ -38,7 +38,7 @@ export const Basic = () => {
         },
         {
             name: "Telegram bot",
-            description: "telegramda sizning botingizni yaratamiz",
+            description: "telegramda sizning kompaniyangiz yoki shahsiy botingizni yaratamiz",
             icon : "fas fa-robot"
         },
         {
