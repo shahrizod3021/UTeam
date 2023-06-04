@@ -31,8 +31,7 @@ public class User extends AbsEntity implements UserDetails {
 
     private UUID photoId;
 
-    @OneToMany
-    private List<Projects> projects;
+    private Integer projects;
 
     @ManyToOne
     @JoinTable(name = "user_role",

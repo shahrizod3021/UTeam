@@ -183,18 +183,16 @@ export const Basic = () => {
                                                     <div className="col-lg-11">
                                                         <div className="meeting-item">
                                                             <div className="thumb">
-                                                                <a href="meeting-details.html"><img
+                                                                <img
                                                                     src={Apis.getContent + item.photoId} draggable={false}
-                                                                    style={{height: "25vh"}} alt={item.name}/></a>
+                                                                    style={{height: "25vh"}} alt={item.name}/>
                                                             </div>
                                                             <div className="down-content">
                                                                 <div className="date violet">
-                                                                    <h6>Proektlar <br/>soni <span>{item.projects.length}</span>
+                                                                    <h6>Proektlar <br/>soni <span>{item.projects}</span>
                                                                     </h6>
                                                                 </div>
-                                                                <a href="meeting-details.html">
                                                                     <h4>{item.name} {item.lastName}</h4>
-                                                                </a>
                                                                 <p>Telefon raqam: {item.phoneNumber}</p>
                                                                 <div className={"card-footer mt-4"}>
                                                                     <Link to={item.email} className={"violet"}>Git hub accauntga

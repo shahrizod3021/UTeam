@@ -44,8 +44,8 @@ public class WorkerController {
         return ResponseEntity.status(user != null ? 200 : 409).body(user);
     }
     @PutMapping("/{id}")
-    public HttpEntity<?> editWorker(@PathVariable UUID id,@RequestBody ReqWorker reqWorker) {
-        ApiResponse apiResponse = workerService.editWorker(id,reqWorker);
+    public HttpEntity<?> editWorker(@PathVariable UUID id,@RequestParam(name = "projects")Integer projects) {
+        ApiResponse apiResponse = workerService.editWorker(id,projects);
         return ResponseEntity.status(apiResponse.isSuccess()? 200 : 409).body(apiResponse);
     }
 

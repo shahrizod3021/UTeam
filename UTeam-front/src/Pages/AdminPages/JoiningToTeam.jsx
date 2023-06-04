@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 import {Base_Url} from "../../Service/Base_Url.js";
 import {toast} from "react-toastify";
+import {resStatus} from "../../Service/Auth/resStatus.js";
 
 export const JoiningToTeam = () => {
     const [name, setName] = useState('')
@@ -15,6 +16,8 @@ export const JoiningToTeam = () => {
     const [team, setTeam] = useState([])
     const [loading, setLoading] = useState(false)
     const [id, setId] = useState('')
+    const [edit, setEdit] = useState(true)
+    const [projects, setProjects] = useState(Number)
     const getTeam = async () => {
         await GetTeam(setTeam)
         setLoading(true)
@@ -49,6 +52,20 @@ export const JoiningToTeam = () => {
         await DeleteWorker(id)
         await getTeam()
     }
+
+    const editWorker = async (id) => {
+        const res = await axios.put(Base_Url + Apis.worker + "/" + id  + "?projects=" + projects)
+        setEdit(true)
+        if (resStatus(res.status)){
+            await getTeam()
+            setProjects(0)
+            return toast.success(res.data.message, {position: "top-center"})
+        }
+    }
+    const hook = (id) => {
+        setEdit(false)
+        setId(id);
+    }
     return (
         <div>
             {loading ? (
@@ -66,7 +83,7 @@ export const JoiningToTeam = () => {
                                                 <label className={"w-100 d-flex flex-column hover-zoom"}
                                                        htmlFor={"rasm"}>
                                                     <img style={{height: "30vh"}} src={Apis.getContent + item.photoId}
-                                                         alt="" onClick={() => setId(item.id)}/>
+                                                         alt={item.name} onClick={() => setId(item.id)}/>
                                                 </label>
                                                 <input type="file" className={"d-none"} id={"rasm"} name={"rasm"}
                                                        onChange={(e) => uploadWorkerPhoto()}/>
@@ -76,9 +93,40 @@ export const JoiningToTeam = () => {
                                                 <p className="card-text">
                                                     Telefon raqam: {item.phoneNumber}
                                                 </p>
-                                                <p className={"card-text"}>
-                                                    Projectlar soni: {item.projects.length} ta
-                                                </p>
+                                                {edit ? (
+                                                    <>
+                                                        <button onClick={() => hook(item.id)} className={"bg-transparent border-0"}>
+                                                            Projectlar soni: {item.projects} ta
+                                                        </button>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        {item.id === id ? (
+                                                            <>
+                                                                <form >
+                                                                    <input type="number" className={"form-control"} placeholder={item.projects} id={"projects"} name={"projects"} value={projects}  onChange={e => setProjects(e.target.value)}/>
+                                                                    {projects === "" ? (
+                                                                        <>
+                                                                            <button className={"btn btn-sm disabled"} onClick={() => editWorker(item.id)}>taxrirlash</button>
+                                                                        </>
+                                                                    ) : (
+                                                                        <>
+                                                                            <button className={"btn btn-sm btn-warning"} type={"button"} onClick={() => editWorker(item.id)}>taxrirlash</button>
+                                                                        </>
+                                                                    )}
+                                                                </form>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <button onClick={() => hook(item.id)} className={"bg-transparent border-0"}>
+                                                                    Projectlar soni: {item.projects} ta
+                                                                </button>
+                                                            </>
+                                                        )}
+
+                                                    </>
+                                                )}
+
                                             </div>
                                             <div className={"card-footer"}>
                                                 <Link to={item.email} className={"link-info me-1"}>Git hub accauntga

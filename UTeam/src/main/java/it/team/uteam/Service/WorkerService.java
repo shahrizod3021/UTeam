@@ -64,22 +64,11 @@ public class WorkerService {
         }
         return null;
     }
-    public ApiResponse editWorker(UUID id,ReqWorker reqWorker){
+    public ApiResponse editWorker(UUID id,Integer projects){
         Optional<User> byId = authRepository.findById(id);
         if (byId.isPresent()){
             User user = byId.get();
-            if (reqWorker.getPhoneNumber().trim().length()!=0){
-                user.setPhoneNumber(reqWorker.getPhoneNumber());
-            }
-            if (reqWorker.getName().trim().length()!=0){
-                user.setName(reqWorker.getName());
-            }
-            if (reqWorker.getLastName().trim().length()!=0){
-                user.setLastName(reqWorker.getLastName());
-            }
-            if (reqWorker.getEmail().trim().length()!=0){
-                user.setEmail(reqWorker.getEmail());
-            }
+            user.setProjects(projects);
             authRepository.save(user);
             return new ApiResponse("worker is successfully edit ",true);
         }
